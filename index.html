@@ -11,6 +11,7 @@
       integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
       crossorigin="anonymous"
     />
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
     <title>Weather App</title>
   </head>
   <body>
@@ -30,6 +31,7 @@
                 type="submit"
                 class="btn btn-primary w-100"
                 value="Search"
+                id="search"
               />
             </div>
           </div>
@@ -37,12 +39,12 @@
         <div class="weatherInfo">
           <div class="row">
             <div class="col-6">
-              <h1>San Francisco</h1>
+              <h1 id="city"></h1>
               <ul>
-                <li><span>Friday 12:50</span>, overcast clouds</li>
+                <li id="description"><span id="date"></span></li>
                 <li>
-                  Humidity: <strong>61%</strong>, Wind:
-                  <strong>7.2km/h</strong>
+                  Humidity: <strong><span id="humidity"></span>%</strong>, Wind:
+                  <strong><span id="wind"></span>km/h</strong>
                 </li>
               </ul>
             </div>
@@ -50,7 +52,7 @@
               <div class="temperature-container d-flex justify-content-end">
                 <canvas width="52" height="52"></canvas>
                 <div>
-                  <span class="temperature">15</span
+                  <span id="temperature" class="temperature"></span
                   ><span class="unit">°C</span>
                 </div>
               </div>
