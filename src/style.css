@@ -115,6 +115,6 @@ body {
   text-align: center;
 }
 
-#description {
+#description:first-letter {
   text-transform: capitalize;
 }
