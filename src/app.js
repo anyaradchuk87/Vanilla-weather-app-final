@@ -1,4 +1,5 @@
 function displayTemperature(response) {
+  console.log(response.data);
   let temperatureElement = document.querySelector("#temperature");
   let cityElement = document.querySelector("#city");
   let descriptionElement = document.querySelector("#description");
@@ -44,21 +45,19 @@ function formatDate(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
-function searchCity(event) {
+function handleSubmit(event) {
   event.preventDefault();
-  let searchInput = document.querySelector(".search-input");
-  let city = document.querySelector("#city");
-  console.log(searchInput);
-  city.innerHTML = searchInput.value;
+  let cityInputElement = document.querySelector(".search-input");
+  search(cityInputElement.value);
 }
 
-let apiKey = "a8c22b5699a15a6f6db70d81d7aec97a";
-let city_name = "San Francisco";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city_name}&appid=${apiKey}&units=metric`;
+function search(city_name) {
+  let apiKey = "a8c22b5699a15a6f6db70d81d7aec97a";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city_name}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayTemperature);
+}
 
-axios.get(apiUrl).then(displayTemperature);
+search("London");
 
-// let searchForm = document.querySelector("#search");
-// searchForm.addEventListener("click", searchCity);
-
-// navigator.geolocation.getCurrentPosition(findPosition);
+let searchForm = document.querySelector("#search-form");
+searchForm.addEventListener("click", handleSubmit);
