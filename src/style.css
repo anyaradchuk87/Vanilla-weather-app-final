@@ -114,3 +114,7 @@ body {
   padding-bottom: 50px;
   text-align: center;
 }
+
+#description {
+  text-transform: capitalize;
+}
